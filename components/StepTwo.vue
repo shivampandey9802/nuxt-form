@@ -1,0 +1,16 @@
+<template>
+  <div>
+    <h2>Step 2</h2>
+
+    <input v-model="formData.age" placeholder="Age" />
+
+    <button @click="$emit('prev')">Back</button>
+    <button @click="$emit('next')">Next</button>
+  </div>
+</template>
+
+<script setup>
+defineProps({
+  formData: Object
+})
+</script>
