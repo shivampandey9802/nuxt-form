@@ -1,5 +1,5 @@
 <template>
-  <div class="form-container">
+   <div class="form-container">
     <Transition name="slide" mode="out-in">
       <component
         :is="currentComponent"
@@ -50,7 +50,16 @@ const components = {
 const currentComponent = computed(() => components[step.value])
 
 const nextStep = () => {
-  if (step.value < 3) step.value++
+  if(step.value === 1 && formData.name && formData.email) {
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!regex.test(formData.email)) {
+      alert('Please enter a valid email address!')
+    } else {
+      step.value++
+    }
+  }
+  else if(step.value === 2 && formData.age) step.value++
+  else alert('Please fill the age fields!')
 }
 
 const prevStep = () => {
@@ -60,8 +69,10 @@ const prevStep = () => {
 const submitForm = () => {
   console.log('Final Data:', formData)
   localStorage.removeItem('multiForm')
-  if( formData.name && formData.email && formData.age && formData.address ) alert('Form submitted!')
-  else alert('Please fill all the fields!')
+  if( step.value === 3 && formData.address ) {
+    alert('Form submitted!') 
+  }
+  else {alert('Please fill the address fields!')}
 }
 </script>
 
