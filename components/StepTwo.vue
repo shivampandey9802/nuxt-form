@@ -2,7 +2,7 @@
   <div>
     <h2>Step 2</h2>
 
-    <input v-model="formData.age" placeholder="Age" required>/>
+    <input v-model="formData.age" placeholder="Age" required>
 
     <button @click="$emit('prev')">Back</button>
     <button @click="$emit('next')">Next</button>

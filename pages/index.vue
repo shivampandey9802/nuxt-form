@@ -60,7 +60,8 @@ const prevStep = () => {
 const submitForm = () => {
   console.log('Final Data:', formData)
   localStorage.removeItem('multiForm')
-  alert('Form submitted!')
+  if( formData.name && formData.email && formData.age && formData.address ) alert('Form submitted!')
+  else alert('Please fill all the fields!')
 }
 </script>
 
